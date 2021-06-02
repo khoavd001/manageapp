@@ -3,7 +3,10 @@ package com.example.manage;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
+import android.text.method.TransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         buttonlogin=findViewById(R.id.login);
         usertext=findViewById(R.id.usernametext);
         passtext=findViewById(R.id.passwordtext);
+        passtext.setTransformationMethod(new PasswordTransformationMethod());
         buttonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

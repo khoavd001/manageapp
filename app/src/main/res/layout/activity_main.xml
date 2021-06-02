@@ -27,6 +27,7 @@
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:ems="10"
+        android:password="true"
         android:inputType="textPersonName"
         android:hint="password"
         app:layout_constraintBottom_toBottomOf="parent"

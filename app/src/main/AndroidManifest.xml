@@ -12,10 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Manage">
+        <activity android:name=".Activity.ui.song.ChooseSingerActivity"></activity>
+        <activity android:name=".Adapter.SingerSpinnerAdapter" />
+        <activity android:name=".Adapter.SingerSpinnerActivity" />
+        <activity android:name=".Activity.ui.singer.DetailSinger" />
+        <activity android:name=".Activity.ui.song.UpdateSong" />
         <activity
             android:name=".Activity.Manage"
             android:label="@string/title_activity_manage"
-            android:theme="@style/Theme.Manage.NoActionBar"></activity>
+            android:theme="@style/Theme.Manage.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

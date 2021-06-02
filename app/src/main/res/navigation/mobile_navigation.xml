@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.manage.Activity.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.example.manage.Activity.ui.song.SongFragment"
+        android:label="Bài Hát"
+        tools:layout="@layout/fragment_song" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.manage.Activity.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:name="com.example.manage.Activity.ui.singer.SingerFragment"
+        android:label="Ca Sĩ"
+        tools:layout="@layout/fragment_singer" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.manage.Activity.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:name="com.example.manage.Activity.ui.album.AlbumFragment"
+        android:label="Album"
+        tools:layout="@layout/fragment_album" />
 </navigation>

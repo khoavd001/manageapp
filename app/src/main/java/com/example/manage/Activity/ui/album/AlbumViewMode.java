@@ -1,14 +1,14 @@
-package com.example.manage.Activity.ui.slideshow;
+package com.example.manage.Activity.ui.album;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class AlbumViewMode extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public AlbumViewMode() {
         mText = new MutableLiveData<>();
         mText.setValue("This is slideshow fragment");
     }
