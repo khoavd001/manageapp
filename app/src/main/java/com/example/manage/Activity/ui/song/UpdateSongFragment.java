@@ -32,12 +32,13 @@ import retrofit2.Response;
 
 
 public class UpdateSongFragment extends Fragment {
-    AllSongAdapter searchBaiHatadapter;
+
     SearchView searchView;
-    RecyclerView recyclerView;
-    ArrayList<BaiHat> arrayList;
+    public static RecyclerView recyclerView;
+    public static ArrayList<BaiHat> arrayList;
     Toolbar toolbar;
     TextView textViewkhongtimthay;
+    public static AllSongAdapter adapter;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -105,10 +106,10 @@ public class UpdateSongFragment extends Fragment {
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 ArrayList<BaiHat> mangbaihat=(ArrayList<BaiHat>) response.body();
                 if(mangbaihat.size()>0){
-                    searchBaiHatadapter= new AllSongAdapter(getActivity(),mangbaihat);
+                    adapter= new AllSongAdapter(getActivity(),mangbaihat);
                     LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
                     recyclerView.setLayoutManager(linearLayoutManager);
-                    recyclerView.setAdapter(searchBaiHatadapter);
+                    recyclerView.setAdapter(adapter);
                     textViewkhongtimthay.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
                 }else {
@@ -130,7 +131,7 @@ public class UpdateSongFragment extends Fragment {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 arrayList = (ArrayList<BaiHat>) response.body();
-                AllSongAdapter adapter = new AllSongAdapter(getActivity(), arrayList);
+                adapter = new AllSongAdapter(getActivity(), arrayList);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
                 recyclerView.setAdapter(adapter);
             }

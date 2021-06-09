@@ -59,4 +59,5 @@ public class SongFragment extends Fragment {
         viewPager.setAdapter(adapter);
     }
 
+
 }

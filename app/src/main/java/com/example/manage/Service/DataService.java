@@ -19,9 +19,13 @@ public interface DataService {
     @FormUrlEncoded
     @POST("login.php")
     Call<List<Account>> Login(@Field("username") String username, @Field("password") String password);
-
+    //GET
     @GET("getallsong.php")
     Call<List<BaiHat>> GetAllSong();
+
+    @FormUrlEncoded
+    @POST("getcasibaihat.php")
+    Call<List<BaiHat>> GetBaiHatCaSi(@Field("IdCaSi") int IdCaSi);
 
     //SEARCH
     @FormUrlEncoded
@@ -36,7 +40,7 @@ public interface DataService {
     //UPDATE
     @FormUrlEncoded
     @POST("update.php")
-    Call<List<BaiHat>> GetUpdateSong(@Field("IdBaiHat") int IdBaiHat, @Field("TenBaiHat") String TenBaiHat, @Field("HinhBaiHat") String HinhBaiHat, @Field("LinkBaiHat") String LinkBaiHat, @Field("TenCaSi") String TenCaSi);
+    Call<String> GetUpdateSong(@Field("IdBaiHat") int IdBaiHat, @Field("TenBaiHat") String TenBaiHat, @Field("HinhBaiHat") String HinhBaiHat, @Field("LinkBaiHat") String LinkBaiHat, @Field("TenCaSi") String TenCaSi);
 
 
     //DELETE
@@ -44,8 +48,6 @@ public interface DataService {
     @POST("delete.php")
     Call<List<BaiHat>> GetDelteBaiHat(@Field("IdBaiHat") int IdBaiHat);
 
-    @FormUrlEncoded
-    @POST("getdanhsachbaihat.php")
-    Call<List<BaiHat>> GetBaiHatCaSi(@Field("IdCaSi") String IdCaSi);
+
 
 }

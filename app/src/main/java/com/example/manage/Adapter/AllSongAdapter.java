@@ -35,6 +35,7 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.ViewHold
         this.arrayList = arrayList;
     }
 
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,6 +54,7 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.ViewHold
         holder.tenbaihat=baiHat.getTenBaiHat().toString();
         holder.linkbaihat=baiHat.getLinkBaiHat().toString();
         holder.hinhbaihat=baiHat.getHinhBaiHat().toString();
+
 
     }
 
@@ -86,6 +88,7 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    notifyDataSetChanged();
                     Intent intent = new Intent(context, UpdateSong.class);
                     intent.putExtra("tenbaihat",tenbaihat);
                     intent.putExtra("linkbaihat",linkbaihat);

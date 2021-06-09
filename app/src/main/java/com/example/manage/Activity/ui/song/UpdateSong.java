@@ -13,6 +13,7 @@ import com.example.manage.Service.DataService;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,14 +54,13 @@ public class UpdateSong extends AppCompatActivity {
         capnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                baiHat.setTenBaiHat("");
-                baiHat.setLinkBaiHat("");
-                baiHat.setHinhBaiHat("");
+
+
 
 
                 update(Integer.parseInt(idbaihat),tenbaihatedit.getText().toString(),hinhbaihatedit.getText().toString(),linkbaihatedit.getText().toString(),textViewtencasi.getText().toString());
                 
-                finish();
+
             }
         });
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -117,22 +117,34 @@ public class UpdateSong extends AppCompatActivity {
 
 
         DataService dataService= APIService.getService();
-        Call<List<BaiHat>> callback=dataService.GetUpdateSong(IdBaiHat, TenBaiHat, HinhBaiHat, LinkBaiHat, TenCaSi);
-        callback.enqueue(new Callback<List<BaiHat>>() {
+        Call<String> callback=dataService.GetUpdateSong(IdBaiHat, TenBaiHat, HinhBaiHat, LinkBaiHat, TenCaSi);
+        callback.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
+                String result=(String) response.body();
+                if (result.equals("Record updated successfully")) {
+                    baiHat.setTenBaiHat(TenBaiHat);
+                    baiHat.setHinhBaiHat(HinhBaiHat);
+                    baiHat.setLinkBaiHat(LinkBaiHat);
 
-                arrayList=(ArrayList<BaiHat>) response.body();
 
+                    UpdateSongFragment.adapter.notifyDataSetChanged();
 
-
+                } else
+                    Toast.makeText(UpdateSong.this, "Lỗi Hệ Thống", Toast.LENGTH_SHORT).show();
+                UpdateSongFragment.adapter.notifyDataSetChanged();
+                finish();
             }
 
             @Override
-            public void onFailure(Call<List<BaiHat>> call, Throwable t) {
-                Toast.makeText(UpdateSong.this, "kkkkkkkkk", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(UpdateSong.this, "Lỗi ", Toast.LENGTH_SHORT).show();
+
             }
         });
+
+
+
     }
 
 }
