@@ -37,21 +37,15 @@ import retrofit2.Response;
 
 public class SingerFragment extends Fragment {
     AllSingerAdapter adapter;
-    private SingerViewModel singerViewModel;
+
     RecyclerView recyclerView;
     TextView textViewkhongtimthay;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        singerViewModel =
-                new ViewModelProvider(this).get(SingerViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_singer, container, false);
         textViewkhongtimthay=root.findViewById(R.id.textviewkhongcodulieusinger);
-        singerViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
 
-            }
-        });
 
         recyclerView=root.findViewById(R.id.rc_allsinger);
         recyclerView.setAdapter(adapter);

@@ -1,5 +1,6 @@
 package com.example.manage.Activity.ui.singer;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.manage.Activity.ui.song.UpdateSongFragment;
 import com.example.manage.Adapter.AllSongAdapter;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.Model.CaSi;
@@ -38,8 +42,8 @@ public class DetailSinger extends AppCompatActivity {
     Button btn;
     ProgressBar progressBar;
     TextView txtAlbum;
-    ArrayList<BaiHat> baiHatArrayList;
-    ArrayList<BaiHat> tempbaiHatArrayList;
+    ArrayList<BaiHat> baiHatArrayList= UpdateSongFragment.arrayList;
+    public static ArrayList<BaiHat> tempbaiHatArrayList;
     int IdCaSi;
 //    ArrayList<Album> albumArrayList;
     AllSongAdapter Songadapter;
@@ -50,9 +54,19 @@ public class DetailSinger extends AppCompatActivity {
         setContentView(R.layout.activity_detail_singer);
         AnhXa();
         GetIntent();
+        toolbar=findViewById(R.id.toolbar_detailsinger);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle(caSi.getTenCaSi().toString());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 
+
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
     private void ViewMore(){
         if(baiHatArrayList.size() < 5){

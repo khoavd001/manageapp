@@ -33,15 +33,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/menu"/>
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_detailsinger"
-                app:layout_collapseMode="pin"
-                app:titleMarginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
                 android:layout_marginBottom="15dp"
                 android:elevation="35dp"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"/>
-
+                app:layout_collapseMode="pin"
+                app:titleMarginBottom="5dp" />
 
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

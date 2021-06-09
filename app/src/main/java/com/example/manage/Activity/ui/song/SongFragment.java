@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class SongFragment extends Fragment {
 
-    private SongeViewMode songeViewMode;
+
     TabLayout tabLayout;
     ViewPager viewPager;
 
@@ -34,15 +34,10 @@ public class SongFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        songeViewMode =
-                new ViewModelProvider(this).get(SongeViewMode.class);
+
         View root = inflater.inflate(R.layout.fragment_song,container,false);
 
-        songeViewMode.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-            }
-        });
+
         viewPager = root.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
         tabLayout = root.findViewById(R.id.tablayout);

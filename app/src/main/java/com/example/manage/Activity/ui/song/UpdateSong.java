@@ -1,8 +1,10 @@
 package com.example.manage.Activity.ui.song;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.manage.Activity.ui.singer.DetailSinger;
 import com.example.manage.Adapter.AllSingerSongUpdate;
 import com.example.manage.Adapter.AllSongAdapter;
 import com.example.manage.Model.BaiHat;
@@ -21,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +42,7 @@ public class UpdateSong extends AppCompatActivity {
     TextView textViewtencasi;
     AllSongAdapter adapter;
     ArrayList<BaiHat> arrayList;
+    Toolbar toolbar;
     int Pos;
     int idbaihatint;
     @Override
@@ -51,6 +55,7 @@ public class UpdateSong extends AppCompatActivity {
         imageButton=findViewById(R.id.imgsingerchoose);
         textViewtencasi=findViewById(R.id.tencasiupdate);
         capnhap=findViewById(R.id.fixsongbtn);
+
         capnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,8 +116,13 @@ public class UpdateSong extends AppCompatActivity {
             baiHat=arrayList.get(Pos);
 
 
-    }
 
+    }
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
+    }
     public void update(int IdBaiHat, String TenBaiHat, String HinhBaiHat, String LinkBaiHat, String TenCaSi){
 
 
@@ -129,7 +139,9 @@ public class UpdateSong extends AppCompatActivity {
                     UpdateSongFragment.arrayList.get(Pos).setTenBaiHat(TenBaiHat);
                     UpdateSongFragment.arrayList.get(Pos).setLinkBaiHat(LinkBaiHat);
                     UpdateSongFragment.arrayList.get(Pos).setHinhBaiHat(HinhBaiHat);
-
+                    DetailSinger.tempbaiHatArrayList.get(Pos).setTenBaiHat(TenBaiHat);
+                    DetailSinger.tempbaiHatArrayList.get(Pos).setLinkBaiHat(LinkBaiHat);
+                    DetailSinger.tempbaiHatArrayList.get(Pos).setHinhBaiHat(HinhBaiHat);
 
                     UpdateSongFragment.adapter.notifyDataSetChanged();
                     Toast.makeText(UpdateSong.this, "Cập nhập thành công", Toast.LENGTH_SHORT).show();
