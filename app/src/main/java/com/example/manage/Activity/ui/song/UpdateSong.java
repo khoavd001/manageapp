@@ -126,9 +126,9 @@ public class UpdateSong extends AppCompatActivity {
                     Toast.makeText(UpdateSong.this, "Lỗi Hệ Thống", Toast.LENGTH_SHORT).show();
 
                 } else{
-                    arrayList.get(Pos).setTenBaiHat(TenBaiHat);
-                    arrayList.get(Pos).setLinkBaiHat(LinkBaiHat);
-                    arrayList.get(Pos).setHinhBaiHat(HinhBaiHat);
+                    UpdateSongFragment.arrayList.get(Pos).setTenBaiHat(TenBaiHat);
+                    UpdateSongFragment.arrayList.get(Pos).setLinkBaiHat(LinkBaiHat);
+                    UpdateSongFragment.arrayList.get(Pos).setHinhBaiHat(HinhBaiHat);
 
 
                     UpdateSongFragment.adapter.notifyDataSetChanged();
