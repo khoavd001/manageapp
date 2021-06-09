@@ -125,6 +125,7 @@ public class SingerFragment extends Fragment {
             public void onResponse(Call<List<CaSi>> call, Response<List<CaSi>> response) {
                 ArrayList<CaSi> arrayList = (ArrayList<CaSi>) response.body();
                 adapter = new AllSingerAdapter(getActivity(), arrayList);
+                
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
             }

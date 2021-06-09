@@ -122,18 +122,22 @@ public class UpdateSong extends AppCompatActivity {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 String result=(String) response.body();
-                if (result.equals("Record updated successfully")) {
-                    baiHat.setTenBaiHat(TenBaiHat);
-                    baiHat.setHinhBaiHat(HinhBaiHat);
-                    baiHat.setLinkBaiHat(LinkBaiHat);
+                if (result.equals("Error updating record")) {
+                    Toast.makeText(UpdateSong.this, "Lỗi Hệ Thống", Toast.LENGTH_SHORT).show();
+
+                } else{
+                    arrayList.get(Pos).setTenBaiHat(TenBaiHat);
+                    arrayList.get(Pos).setLinkBaiHat(LinkBaiHat);
+                    arrayList.get(Pos).setHinhBaiHat(HinhBaiHat);
 
 
                     UpdateSongFragment.adapter.notifyDataSetChanged();
+                    Toast.makeText(UpdateSong.this, "Cập nhập thành công", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
 
-                } else
-                    Toast.makeText(UpdateSong.this, "Lỗi Hệ Thống", Toast.LENGTH_SHORT).show();
                 UpdateSongFragment.adapter.notifyDataSetChanged();
-                finish();
+
             }
 
             @Override
