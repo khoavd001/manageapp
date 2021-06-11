@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ui.song.UpdateSong"
+
     android:paddingBottom="16dp"
     android:id="@+id/updatesong">
     <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -23,15 +24,7 @@
 
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
 
-            android:id="@+id/updatesong_toolbar"
-            app:layout_constraintBottom_toTopOf="@+id/textView4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
 
     </com.google.android.material.appbar.CollapsingToolbarLayout>

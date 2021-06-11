@@ -1,6 +1,7 @@
 package com.example.manage.Service;
 
 import com.example.manage.Model.Account;
+import com.example.manage.Model.Album;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.Model.CaSi;
 
@@ -22,6 +23,11 @@ public interface DataService {
     //GET
     @GET("getallsong.php")
     Call<List<BaiHat>> GetAllSong();
+
+
+    @GET("getallalbum.php")
+    Call<List<Album>> GetAllAlbum();
+
 
     @FormUrlEncoded
     @POST("getcasibaihat.php")

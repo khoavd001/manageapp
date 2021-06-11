@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.manage.Activity.ui.singer.DetailSinger;
 import com.example.manage.Activity.ui.song.UpdateSong;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.Model.CaSi;
@@ -89,7 +90,7 @@ public class AllSongAdapter extends RecyclerView.Adapter<AllSongAdapter.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    notifyDataSetChanged();
+
                     Intent intent = new Intent(context, UpdateSong.class);
                     intent.putExtra("tenbaihat",tenbaihat);
                     intent.putExtra("linkbaihat",linkbaihat);

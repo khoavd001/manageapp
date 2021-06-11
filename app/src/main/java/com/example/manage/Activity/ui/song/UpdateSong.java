@@ -23,7 +23,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +64,7 @@ public class UpdateSong extends AppCompatActivity {
 
 
                 update(Integer.parseInt(idbaihat),tenbaihatedit.getText().toString(),hinhbaihatedit.getText().toString(),linkbaihatedit.getText().toString(),textViewtencasi.getText().toString());
-                
+
 
             }
         });
@@ -115,6 +115,13 @@ public class UpdateSong extends AppCompatActivity {
             arrayList=intent.getParcelableArrayListExtra("mangbaihat");
             baiHat=arrayList.get(Pos);
 
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle(baiHat.getTenBaiHat().toString());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        getSupportActionBar().setHomeButtonEnabled(true);
 
 
     }
