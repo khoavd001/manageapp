@@ -71,7 +71,7 @@ public class SingerFragment extends Fragment {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Searchtukhoa(newText);
+//                Searchtukhoa(newText);
                 return true;
             }
         });

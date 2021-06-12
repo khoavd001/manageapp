@@ -46,7 +46,7 @@ public interface DataService {
     //UPDATE
     @FormUrlEncoded
     @POST("update.php")
-    Call<String> GetUpdateSong(@Field("IdBaiHat") int IdBaiHat, @Field("TenBaiHat") String TenBaiHat, @Field("HinhBaiHat") String HinhBaiHat, @Field("LinkBaiHat") String LinkBaiHat, @Field("TenCaSi") String TenCaSi);
+    Call<String> GetUpdateSong(@Field("IdBaiHat") int IdBaiHat, @Field("TenBaiHat") String TenBaiHat, @Field("hinhanh") String HinhBaiHat, @Field("filename") String tenfile, @Field("LinkBaiHat") String LinkBaiHat, @Field("TenCaSi") String TenCaSi);
 
 
     //DELETE
