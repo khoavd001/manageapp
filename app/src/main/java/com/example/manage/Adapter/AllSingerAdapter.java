@@ -2,13 +2,12 @@ package com.example.manage.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.manage.Activity.ui.singer.DetailSinger;
+import com.example.manage.Activity.ui.singer.DetailSingerActivity;
 import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -64,7 +63,7 @@ public class AllSingerAdapter extends  RecyclerView.Adapter<AllSingerAdapter.Vie
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, DetailSinger.class);
+                    Intent intent = new Intent(context, DetailSingerActivity.class);
                     intent.putExtra("CaSi",  arrayList.get(getPosition()));
                     context.startActivity(intent);
 

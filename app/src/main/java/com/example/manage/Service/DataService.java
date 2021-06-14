@@ -55,8 +55,8 @@ public interface DataService {
 
     //DELETE
     @FormUrlEncoded
-    @POST("delete.php")
-    Call<List<BaiHat>> GetDelteBaiHat(@Field("IdBaiHat") int IdBaiHat);
+    @POST("deletesong.php")
+    Call<String> GetDelteBaiHat(@Field("IdBaiHat") int IdBaiHat);
 
 
 

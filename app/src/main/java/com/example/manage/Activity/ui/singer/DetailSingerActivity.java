@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,12 +16,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.manage.Activity.Manage;
-import com.example.manage.Activity.ui.song.UpdateSong;
 import com.example.manage.Activity.ui.song.UpdateSongFragment;
 import com.example.manage.Adapter.AllAlbumAdapter;
 import com.example.manage.Adapter.AllSongAdapter;
-import com.example.manage.MainActivity;
 import com.example.manage.Model.Album;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.Model.CaSi;
@@ -39,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DetailSinger extends AppCompatActivity {
+public class DetailSingerActivity extends AppCompatActivity {
     CoordinatorLayout coordinatorLayout;
     Toolbar toolbar;
     ImageView imageView;
@@ -103,7 +98,7 @@ public class DetailSinger extends AppCompatActivity {
         if (albumArrayList.size() > 0) {
 
             AllAlbumAdapter adapter = new AllAlbumAdapter(this, albumArrayList);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DetailSinger.this);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DetailSingerActivity.this);
             linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             recyclerViewAlBum.setLayoutManager(linearLayoutManager);
             recyclerViewAlBum.setAdapter(adapter);
@@ -149,7 +144,7 @@ public class DetailSinger extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Album>> call, Throwable t) {
-                Toast.makeText(DetailSinger.this, "fail", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailSingerActivity.this, "fail", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -160,7 +155,7 @@ public class DetailSinger extends AppCompatActivity {
         else
             Songadapter = new AllSongAdapter(this, tempbaiHatArrayList);
         recyclerViewBaiHat.setAdapter(Songadapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DetailSinger.this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DetailSingerActivity.this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         recyclerViewBaiHat.setLayoutManager(linearLayoutManager);
     }

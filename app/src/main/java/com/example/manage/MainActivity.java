@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                             ArrayList<Account> mangaccount=(ArrayList<Account>) response.body();
                             if(mangaccount.size()>0){
                                 Intent intent=new Intent(MainActivity.this, Manage.class);
-
+                                intent.putExtra("accountname", username);
                                 startActivity(intent);
                             }
                         }

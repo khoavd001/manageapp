@@ -1,8 +1,10 @@
 package com.example.manage.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.example.manage.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,6 +23,7 @@ public class Manage extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
+    TextView accountname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +31,7 @@ public class Manage extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        accountname=findViewById(R.id.accountname);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -40,6 +43,11 @@ public class Manage extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        Intent intent=getIntent();
+        if(intent.hasExtra("accountname"))
+        {
+            accountname.setText((String) intent.getSerializableExtra("accountname"));
+        }
     }
 
 

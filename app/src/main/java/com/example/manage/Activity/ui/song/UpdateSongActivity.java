@@ -3,10 +3,8 @@ package com.example.manage.Activity.ui.song;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
-import com.example.manage.Activity.ui.singer.DetailSinger;
-import com.example.manage.Adapter.AllSingerSongUpdate;
+import com.example.manage.Activity.ui.singer.DetailSingerActivity;
 import com.example.manage.Adapter.AllSongAdapter;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.R;
@@ -14,14 +12,12 @@ import com.example.manage.Service.APIService;
 import com.example.manage.Service.DataService;
 import com.squareup.picasso.Picasso;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,13 +31,12 @@ import androidx.appcompat.widget.Toolbar;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UpdateSong extends AppCompatActivity {
+public class UpdateSongActivity extends AppCompatActivity {
     BaiHat baiHat;
     String tenbaihat=new String(),linkbaihat,hinhbaihat,idbaihat;
     EditText tenbaihatedit,linkbaihatedit;
@@ -84,8 +79,8 @@ public class UpdateSong extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               Intent intent=new Intent(UpdateSong.this, ChooseSingerActivity.class);
-               UpdateSong.this.startActivity(intent);
+               Intent intent=new Intent(UpdateSongActivity.this, ChooseSingerActivity.class);
+               UpdateSongActivity.this.startActivity(intent);
             }
         });
         GetIntent();
@@ -202,20 +197,20 @@ public class UpdateSong extends AppCompatActivity {
             public void onResponse(Call<String> call, Response<String> response) {
                 String result=(String) response.body();
                 if (result.equals("that bai")) {
-                    Toast.makeText(UpdateSong.this, "Lỗi Hệ Thống", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateSongActivity.this, "Lỗi Hệ Thống", Toast.LENGTH_SHORT).show();
 
                 } else{
 
                     UpdateSongFragment.arrayList.get(Pos).setTenBaiHat(tenbaihatedit.getText().toString());
                     UpdateSongFragment.arrayList.get(Pos).setHinhBaiHat(TenFile);
                     UpdateSongFragment.arrayList.get(Pos).setLinkBaiHat(linkbaihatedit.getText().toString());
-                    if(DetailSinger.tempbaiHatArrayList!=null) {
-                        DetailSinger.tempbaiHatArrayList.get(Pos).setTenBaiHat(tenbaihatedit.getText().toString());
-                        DetailSinger.tempbaiHatArrayList.get(Pos).setLinkBaiHat(linkbaihatedit.getText().toString());
-                        DetailSinger.tempbaiHatArrayList.get(Pos).setHinhBaiHat(TenFile);
+                    if(DetailSingerActivity.tempbaiHatArrayList!=null) {
+                        DetailSingerActivity.tempbaiHatArrayList.get(Pos).setTenBaiHat(tenbaihatedit.getText().toString());
+                        DetailSingerActivity.tempbaiHatArrayList.get(Pos).setLinkBaiHat(linkbaihatedit.getText().toString());
+                        DetailSingerActivity.tempbaiHatArrayList.get(Pos).setHinhBaiHat(TenFile);
                     }
                     UpdateSongFragment.adapter.notifyItemChanged(Pos);
-                    Toast.makeText(UpdateSong.this, "Cập nhập thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateSongActivity.this, "Cập nhập thành công", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
@@ -225,7 +220,7 @@ public class UpdateSong extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(UpdateSong.this, "Lỗi ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateSongActivity.this, "Lỗi ", Toast.LENGTH_SHORT).show();
 
             }
         });
