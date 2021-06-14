@@ -28,6 +28,10 @@ public interface DataService {
     @GET("getallalbum.php")
     Call<List<Album>> GetAllAlbum();
 
+    @FormUrlEncoded
+    @POST("getsingeralbum.php")
+    Call<List<Album>> GetAlbumCasi(@Field("idcasi") int idcasi);
+
 
     @FormUrlEncoded
     @POST("getcasibaihat.php")

@@ -18,8 +18,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.manage.Activity.Manage;
+import com.example.manage.Activity.ui.song.UpdateSong;
 import com.example.manage.Activity.ui.song.UpdateSongFragment;
+import com.example.manage.Adapter.AllAlbumAdapter;
 import com.example.manage.Adapter.AllSongAdapter;
+import com.example.manage.MainActivity;
+import com.example.manage.Model.Album;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.Model.CaSi;
 import com.example.manage.R;
@@ -39,13 +44,14 @@ public class DetailSinger extends AppCompatActivity {
     Toolbar toolbar;
     ImageView imageView;
     RecyclerView recyclerViewBaiHat, recyclerViewAlBum;
-    Button btn;
+    Button btn,addsongbtn;
     ProgressBar progressBar;
     TextView txtAlbum;
     ArrayList<BaiHat> baiHatArrayList= UpdateSongFragment.arrayList;
+    ArrayList<Album> albumArrayList;
     public static ArrayList<BaiHat> tempbaiHatArrayList;
     int IdCaSi;
-//    ArrayList<Album> albumArrayList;
+
     AllSongAdapter Songadapter;
     CaSi caSi;
     @Override
@@ -59,6 +65,19 @@ public class DetailSinger extends AppCompatActivity {
         actionBar.setTitle(caSi.getTenCaSi().toString());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Songadapter.getItemCount() < 5){
+                    Songadapter.setArrayList(baiHatArrayList);
+                    btn.setText("Hiển thị ít");
+                }
+                else{
+                    btn.setText("Xem Tất Cả");
+                    Songadapter.setArrayList(tempbaiHatArrayList);
+                }
+            }
+        });
 
 
 
@@ -80,11 +99,31 @@ public class DetailSinger extends AppCompatActivity {
             tempbaiHatArrayList.add(baiHatArrayList.get(3));
         }
     }
+    private void setDataAlbum() {
+        if (albumArrayList.size() > 0) {
+
+            AllAlbumAdapter adapter = new AllAlbumAdapter(this, albumArrayList);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(DetailSinger.this);
+            linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            recyclerViewAlBum.setLayoutManager(linearLayoutManager);
+            recyclerViewAlBum.setAdapter(adapter);
+        }
+        else
+        {
+            txtAlbum.setVisibility(View.INVISIBLE);
+        }
+
+
+    }
     private void AnhXa(){
-    imageView=findViewById(R.id.img_detailsinger);
-    recyclerViewBaiHat=findViewById(R.id.rv_detailsinger_baihat);
-    toolbar=findViewById(R.id.toolbar_detailsinger);
-    tempbaiHatArrayList=new ArrayList<>();
+        recyclerViewAlBum=findViewById(R.id.rv_detailsinger_album);
+        imageView=findViewById(R.id.img_detailsinger);
+        recyclerViewBaiHat=findViewById(R.id.rv_detailsinger_baihat);
+        toolbar=findViewById(R.id.toolbar_detailsinger);
+        tempbaiHatArrayList=new ArrayList<>();
+        btn=findViewById(R.id.btn_viewmore_baihat_detailsinger);
+        addsongbtn=findViewById(R.id.addsongtosinger);
+
 //    recyclerViewAlBum=findViewById(R.id.rv_detailsinger_album);
     }
     private void GetIntent(){
@@ -94,9 +133,26 @@ public class DetailSinger extends AppCompatActivity {
             caSi = (CaSi) intent.getSerializableExtra("CaSi");
             IdCaSi=Integer.parseInt(caSi.getIdCaSi());
             getbaihatcasi(IdCaSi);
-//            getAlbumCaSi(caSi.getIdCaSi());
+            getAlbumCaSi(IdCaSi);
             setInfoCaSi();
         }
+    }
+    private void getAlbumCaSi(int idCaSi) {
+        DataService dataService = APIService.getService();
+        Call<List<Album>> callback = dataService.GetAlbumCasi(idCaSi);
+        callback.enqueue(new Callback<List<Album>>() {
+            @Override
+            public void onResponse(Call<List<Album>> call, Response<List<Album>> response) {
+                albumArrayList = (ArrayList<Album>) response.body();
+                setDataAlbum();
+            }
+
+            @Override
+            public void onFailure(Call<List<Album>> call, Throwable t) {
+                Toast.makeText(DetailSinger.this, "fail", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
     private void setDataBaiHat() {
         if( baiHatArrayList.size() < 5)
@@ -115,8 +171,8 @@ public class DetailSinger extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
                 baiHatArrayList=(ArrayList<BaiHat>) response.body();
-               ViewMore();
-               setDataBaiHat();
+                ViewMore();
+                setDataBaiHat();
             }
 
             @Override

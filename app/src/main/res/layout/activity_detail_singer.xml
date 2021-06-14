@@ -37,6 +37,7 @@
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_detailsinger"
                 android:layout_width="match_parent"
+
                 android:layout_height="?attr/actionBarSize"
                 android:layout_marginBottom="15dp"
                 android:elevation="35dp"
@@ -61,6 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <TextView
                 android:id="@+id/txt_detailsinger_baihat"
                 android:text="Bài Hát  "
@@ -80,7 +82,7 @@
             <Button
                 android:id="@+id/btn_viewmore_baihat_detailsinger"
                 android:text="Xem thêm"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/rv_detailsinger_baihat"
                 android:backgroundTint="@color/material_on_background_emphasis_high_type"
@@ -102,6 +104,13 @@
                 android:layout_below="@+id/txt_detailsinger_album"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/addsongtosinger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thêm bài hát vào ca sĩ"
+                android:layout_toRightOf="@+id/txt_detailsinger_baihat" />
 
 
         </RelativeLayout>

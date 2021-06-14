@@ -177,6 +177,7 @@ public class UpdateSong extends AppCompatActivity {
                 if (requestCode == RequestAvatar) {
                     hinhbaihatedit.setImageBitmap(bitmap);
 
+
                 }
 
 
@@ -208,10 +209,11 @@ public class UpdateSong extends AppCompatActivity {
                     UpdateSongFragment.arrayList.get(Pos).setTenBaiHat(tenbaihatedit.getText().toString());
                     UpdateSongFragment.arrayList.get(Pos).setHinhBaiHat(TenFile);
                     UpdateSongFragment.arrayList.get(Pos).setLinkBaiHat(linkbaihatedit.getText().toString());
-//                    DetailSinger.tempbaiHatArrayList.get(Pos).setTenBaiHat(tenbaihatedit.getText().toString());
-//                    DetailSinger.tempbaiHatArrayList.get(Pos).setLinkBaiHat(linkbaihatedit.getText().toString());
-//                    DetailSinger.tempbaiHatArrayList.get(Pos).setHinhBaiHat(TenFile);
-
+                    if(DetailSinger.tempbaiHatArrayList!=null) {
+                        DetailSinger.tempbaiHatArrayList.get(Pos).setTenBaiHat(tenbaihatedit.getText().toString());
+                        DetailSinger.tempbaiHatArrayList.get(Pos).setLinkBaiHat(linkbaihatedit.getText().toString());
+                        DetailSinger.tempbaiHatArrayList.get(Pos).setHinhBaiHat(TenFile);
+                    }
                     UpdateSongFragment.adapter.notifyItemChanged(Pos);
                     Toast.makeText(UpdateSong.this, "Cập nhập thành công", Toast.LENGTH_SHORT).show();
                     finish();
