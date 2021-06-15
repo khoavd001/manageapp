@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.manage.R;
 
-public class AddAlbum extends Fragment {
+public class AddAlbumFragment extends Fragment {
 
 
 

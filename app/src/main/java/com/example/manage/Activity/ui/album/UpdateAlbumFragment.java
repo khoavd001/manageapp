@@ -34,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class UpdateAlbum extends Fragment {
+public class UpdateAlbumFragment extends Fragment {
 
     AllAlbumAdapter adapter;
     ArrayList<Album> arrayList;

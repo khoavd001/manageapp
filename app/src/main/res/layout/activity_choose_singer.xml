@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ui.song.ChooseSingerActivity"
-    android:id="@+id/rlvlayout">
+    android:id="@+id/rlvlayout"
+    android:background="@drawable/customactivity">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

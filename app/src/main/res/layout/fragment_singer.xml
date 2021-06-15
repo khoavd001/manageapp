@@ -4,11 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/customactivity"
     tools:context=".Activity.ui.singer.SingerFragment">
+
+    <Button
+        android:id="@+id/addsingerbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thêm ca sĩ"
+        android:textSize="20dp"
+        app:backgroundTint="@color/button" />
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rc_allsinger"/>
+        android:id="@+id/rc_allsinger"
+        android:layout_below="@+id/addsingerbtn"/>
     <TextView
 
         android:visibility="gone"

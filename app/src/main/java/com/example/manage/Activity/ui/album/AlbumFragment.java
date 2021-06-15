@@ -4,17 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.manage.Activity.ui.song.AddSongFragment;
-import com.example.manage.Activity.ui.song.UpdateSongFragment;
 import com.example.manage.Adapter.ViewPagerAdapter;
 import com.example.manage.R;
 import com.google.android.material.tabs.TabLayout;
@@ -38,8 +32,8 @@ public class AlbumFragment extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
 
-        adapter.addFragment(new UpdateAlbum(), "Chỉnh sửa");
-        adapter.addFragment(new AddAlbum(), "Thêm");
+        adapter.addFragment(new UpdateAlbumFragment(), "Chỉnh sửa");
+        adapter.addFragment(new AddAlbumFragment(), "Thêm");
 
         viewPager.setAdapter(adapter);
     }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ui.song.UpdateSongActivity"
-
+    android:background="@drawable/customactivity"
     android:paddingBottom="16dp"
     android:id="@+id/updatesong">
 
@@ -33,7 +33,7 @@
         android:id="@+id/tenbaihatedit"
         android:layout_width="250dp"
         android:layout_height="47dp"
-
+        android:background="@drawable/roundeditext"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
 
@@ -77,7 +77,7 @@
 
         android:layout_margin="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
-
+        android:background="@drawable/roundeditext"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -96,7 +96,10 @@
         android:id="@+id/fixsongbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundeditext"
+        android:backgroundTint="@color/blue"
         android:text="Update"
+        app:backgroundTint="@color/blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
