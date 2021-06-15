@@ -12,9 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Manage">
-        <activity android:name=".Activity.ui.song.ChooseSingerActivity"></activity>
-        <activity android:name=".Adapter.SingerSpinnerAdapter" />
-        <activity android:name=".Adapter.SingerSpinnerActivity" />
+
+
         <activity android:name=".Activity.ui.singer.DetailSingerActivity" />
         <activity android:name=".Activity.ui.song.UpdateSongActivity" />
         <activity

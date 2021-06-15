@@ -50,25 +50,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.444" />
 
-    <TextView
-        android:id="@+id/tencasiupdate"
-        android:layout_width="119dp"
-        android:layout_height="38dp"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Tên ca sĩ"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.328"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.916" />
+
 
     <EditText
         android:id="@+id/linkbaihateditext"
@@ -146,30 +128,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.565" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ca Sĩ"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.759" />
 
-    <ImageButton
-        android:id="@+id/imgsingerchoose"
-        android:layout_width="119dp"
-        android:layout_height="119dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.321"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784"
-        tools:srcCompat="@tools:sample/avatars" />
+
+
 
     <ImageView
         android:id="@+id/hinhbaihatedit"
@@ -182,6 +143,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.195"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/chonlinkfinkmp3btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chon link file mp3"
+        app:layout_constraintBottom_toTopOf="@+id/fixsongbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linkbaihateditext"
+        app:layout_constraintVertical_bias="0.232" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

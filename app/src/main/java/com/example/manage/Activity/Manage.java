@@ -44,10 +44,7 @@ public class Manage extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         Intent intent=getIntent();
-//        if(intent.hasExtra("accountname"))
-//        {
-//            accountname.setText((String)("accountname"));
-//        }
+//        accountname.setText("hello");
     }
 
 

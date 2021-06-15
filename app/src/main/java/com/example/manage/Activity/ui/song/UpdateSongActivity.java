@@ -41,16 +41,17 @@ public class UpdateSongActivity extends AppCompatActivity {
     String tenbaihat=new String(),linkbaihat,hinhbaihat,idbaihat;
     EditText tenbaihatedit,linkbaihatedit;
     ImageView hinhbaihatedit;
-    Button capnhap;
+    Button capnhap,chonlinkfile;
     Spinner spinner;
     ImageButton imageButton;
-    TextView textViewtencasi;
+
     AllSongAdapter adapter;
     ArrayList<BaiHat> arrayList;
     int RequestAvatar = 123;
+    int RequestMp3=456;
     Toolbar toolbar;
     int Pos;
-    Bitmap bitmap;
+    Bitmap bitmap,bitmapmp3;
     int idbaihatint;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +60,8 @@ public class UpdateSongActivity extends AppCompatActivity {
         tenbaihatedit=findViewById(R.id.tenbaihatedit);
         hinhbaihatedit=findViewById(R.id.hinhbaihatedit);
         linkbaihatedit=findViewById(R.id.linkbaihateditext);
-        imageButton=findViewById(R.id.imgsingerchoose);
-        textViewtencasi=findViewById(R.id.tencasiupdate);
+        chonlinkfile=findViewById(R.id.chonlinkfinkmp3btn);
+
         capnhap=findViewById(R.id.fixsongbtn);
 
         capnhap.setOnClickListener(new View.OnClickListener() {
@@ -70,14 +71,7 @@ public class UpdateSongActivity extends AppCompatActivity {
 
             }
         });
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-               Intent intent=new Intent(UpdateSongActivity.this, ChooseSingerActivity.class);
-               UpdateSongActivity.this.startActivity(intent);
-            }
-        });
         GetIntent();
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle(baiHat.getTenBaiHat().toString());
@@ -86,6 +80,7 @@ public class UpdateSongActivity extends AppCompatActivity {
 
         getSupportActionBar().setHomeButtonEnabled(true);
         chooseimage();
+//        choosemp3();
 
     }
     public void chooseimage(){
@@ -97,7 +92,20 @@ public class UpdateSongActivity extends AppCompatActivity {
             }
         });
     }
-
+//    public void choosemp3(){
+//        chonlinkfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                SelectMp3Upload(RequestMp3);
+//            }
+//        });
+//    }
+//    private void SelectMp3Upload(int code) {
+//        Intent intent = new Intent();
+//        intent.setType("audio/mp3");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(intent, code);
+//    }
 
 
     private void SelectImageUpload(int code) {
@@ -129,11 +137,7 @@ public class UpdateSongActivity extends AppCompatActivity {
             linkbaihatedit.setText((String) intent.getSerializableExtra("linkbaihat"));
 
         }
-        if (intent.hasExtra("tencasi")) {
 
-            textViewtencasi.setText((String) intent.getSerializableExtra("tencasi"));
-
-        }
         if (intent.hasExtra("idbaihat")) {
 
             idbaihat=(String) intent.getSerializableExtra("idbaihat");
@@ -164,6 +168,7 @@ public class UpdateSongActivity extends AppCompatActivity {
 
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
+//                bitmapmp3=MediaStore.Audio.
                 if (requestCode == RequestAvatar) {
                     hinhbaihatedit.setImageBitmap(bitmap);
 
@@ -186,7 +191,7 @@ public class UpdateSongActivity extends AppCompatActivity {
 
         String TenFile = "https://regulatory-alcoholi.000webhostapp.com/server/picture/" + "HinhBaiHat"+idbaihat + ".jpg";
         DataService dataService= APIService.getService();
-        Call<String> callback=dataService.GetUpdateSong(idbaihatint, tenbaihatedit.getText().toString(), encodedImage, "HinhBaiHat"+idbaihat, linkbaihatedit.getText().toString(), textViewtencasi.getText().toString());
+        Call<String> callback=dataService.GetUpdateSong(idbaihatint, tenbaihatedit.getText().toString(), encodedImage, "HinhBaiHat"+idbaihat, linkbaihatedit.getText().toString());
         callback.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

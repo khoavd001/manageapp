@@ -114,7 +114,7 @@
 
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/txt_detailsinger_baihat"
-                android:background="@drawable/roundeditext"
+                android:background="@drawable/buttonround"
                 android:text="Thêm bài hát vào ca sĩ"
                 app:backgroundTint="@color/button" />
 
