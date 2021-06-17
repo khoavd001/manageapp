@@ -17,7 +17,6 @@
         android:fitsSystemWindows="true"
         android:layout_width="match_parent"
         android:layout_height="380dp">
-
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingtoolbarlayout_detailsinger"
             android:fitsSystemWindows="true"

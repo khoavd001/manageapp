@@ -61,7 +61,7 @@ public class UpdateSongActivity extends AppCompatActivity {
         hinhbaihatedit=findViewById(R.id.hinhbaihatedit);
         linkbaihatedit=findViewById(R.id.linkbaihateditext);
         chonlinkfile=findViewById(R.id.chonlinkfinkmp3btn);
-
+        toolbar=findViewById(R.id.fixtoolbar);
         capnhap=findViewById(R.id.fixsongbtn);
 
         capnhap.setOnClickListener(new View.OnClickListener() {
@@ -73,12 +73,14 @@ public class UpdateSongActivity extends AppCompatActivity {
         });
 
         GetIntent();
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle(baiHat.getTenBaiHat().toString());
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        getSupportActionBar().setHomeButtonEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         chooseimage();
 //        choosemp3();
 
@@ -153,11 +155,11 @@ public class UpdateSongActivity extends AppCompatActivity {
 
 
     }
-    @Override
-    public boolean onSupportNavigateUp(){
-        finish();
-        return true;
-    }
+//    @Override
+//    public boolean onSupportNavigateUp(){
+//        finish();
+//        return true;
+//    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
