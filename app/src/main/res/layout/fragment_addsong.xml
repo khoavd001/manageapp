@@ -53,24 +53,19 @@
         android:id="@+id/linkbaihateditextaddsong"
         android:layout_width="250dp"
         android:layout_height="47dp"
+
+
         android:background="@drawable/roundeditext"
-
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:ems="10"
         android:hint="Link bài hát"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintHorizontal_bias="0.583"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tenbaihataddsong"
 
-        app:layout_constraintVertical_bias="0.358" />
+        app:layout_constraintVertical_bias="0.155" />
 
     <Button
         android:id="@+id/addsongbtn"
@@ -86,7 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.799" />
 
     <TextView
         android:id="@+id/tenbaihataddsong"
