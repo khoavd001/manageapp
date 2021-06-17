@@ -1,7 +1,9 @@
 package com.example.manage.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -45,9 +48,44 @@ public class Manage extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 //        Intent intent=getIntent();
 //        accountname.setText("hello");
+
     }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Closing Activity")
+                .setMessage("Bạn có chắc muốn đăng xuất")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
 
+                })
+                .setNegativeButton("No", null)
+                .show();
+    }
+
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if(keyCode==KeyEvent.KEYCODE_BACK) {
+//            AlertDialog.Builder b = new AlertDialog.Builder(this);
+//            b.setTitle("Exit");
+//            b.setMessage("Bạn có muốn đăng xuất ?");
+//            b.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    finish();
+//                }
+//            });
+//            b.setNegativeButton(android.R.string.no, null);
+//        }
+//        return super.onKeyDown(keyCode, event);
+//
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {
