@@ -4,8 +4,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.manage.Activity.Manage;
 import com.example.manage.Activity.ui.singer.DetailSingerActivity;
 import com.example.manage.Adapter.AllSongAdapter;
+import com.example.manage.MainActivity;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.R;
 import com.example.manage.Service.APIService;
@@ -13,6 +15,7 @@ import com.example.manage.Service.DataService;
 import com.squareup.picasso.Picasso;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +32,8 @@ import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -75,6 +80,7 @@ public class UpdateSongActivity extends AppCompatActivity {
         GetIntent();
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +88,7 @@ public class UpdateSongActivity extends AppCompatActivity {
             }
         });
         chooseimage();
-//        choosemp3();
+        choosemp3();
 
     }
     public void chooseimage(){
@@ -94,27 +100,27 @@ public class UpdateSongActivity extends AppCompatActivity {
             }
         });
     }
-//    public void choosemp3(){
-//        chonlinkfile.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                SelectMp3Upload(RequestMp3);
-//            }
-//        });
-//    }
-//    private void SelectMp3Upload(int code) {
-//        Intent intent = new Intent();
-//        intent.setType("audio/mp3");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(intent, code);
-//    }
+    public void choosemp3(){
+        chonlinkfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SelectMp3Upload(RequestMp3);
+            }
+        });
+    }
+    private void SelectMp3Upload(int code) {
+        Intent intent = new Intent();
+        intent.setType("audio/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, RequestAvatar);
+    }
 
 
     private void SelectImageUpload(int code) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, code);
+        startActivityForResult(intent, RequestMp3);
     }
     private void GetIntent(){
 
@@ -155,11 +161,7 @@ public class UpdateSongActivity extends AppCompatActivity {
 
 
     }
-//    @Override
-//    public boolean onSupportNavigateUp(){
-//        finish();
-//        return true;
-//    }
+    String selectedpath="";
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -167,21 +169,37 @@ public class UpdateSongActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && data != null) {
 
             Uri path = data.getData();
+            Uri mp3=data.getData();
 
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
-//                bitmapmp3=MediaStore.Audio.
+
                 if (requestCode == RequestAvatar) {
                     hinhbaihatedit.setImageBitmap(bitmap);
 
 
                 }
+                if(requestCode==RequestMp3)
+                {
+
+                    System.out.println("RequestMp3");
+                    selectedpath=getPath(mp3);
+                    linkbaihatedit.setText(selectedpath);
+                }
+
 
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+    public String getPath(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
     public void update(){
 
@@ -190,6 +208,8 @@ public class UpdateSongActivity extends AppCompatActivity {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream);
         byte[] imageInByte = byteArrayOutputStream.toByteArray();
         String encodedImage = Base64.encodeToString(imageInByte,Base64.DEFAULT);
+
+//        FileInputStream fileInputStream=new FileInputStream(new File(selectedpath));
 
         String TenFile = "https://regulatory-alcoholi.000webhostapp.com/server/picture/" + "HinhBaiHat"+idbaihat + ".jpg";
         DataService dataService= APIService.getService();
@@ -203,9 +223,9 @@ public class UpdateSongActivity extends AppCompatActivity {
 
                 } else{
 
-                    UpdateSongFragment.arrayList.get(Pos).setTenBaiHat(tenbaihatedit.getText().toString());
-                    UpdateSongFragment.arrayList.get(Pos).setHinhBaiHat(TenFile);
-                    UpdateSongFragment.arrayList.get(Pos).setLinkBaiHat(linkbaihatedit.getText().toString());
+                    Manage.arrayList.get(Pos).setTenBaiHat(tenbaihatedit.getText().toString());
+                    Manage.arrayList.get(Pos).setHinhBaiHat(TenFile);
+                    Manage.arrayList.get(Pos).setLinkBaiHat(linkbaihatedit.getText().toString());
                     if(DetailSingerActivity.tempbaiHatArrayList!=null) {
                         DetailSingerActivity.tempbaiHatArrayList.get(Pos).setTenBaiHat(tenbaihatedit.getText().toString());
                         DetailSingerActivity.tempbaiHatArrayList.get(Pos).setLinkBaiHat(linkbaihatedit.getText().toString());

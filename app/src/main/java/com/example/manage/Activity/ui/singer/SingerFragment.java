@@ -1,5 +1,6 @@
 package com.example.manage.Activity.ui.singer;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.manage.Adapter.AllSingerAdapter;
 import com.example.manage.Adapter.AllSingerSongUpdate;
 import com.example.manage.Adapter.AllSongAdapter;
+import com.example.manage.MainActivity;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.Model.CaSi;
 import com.example.manage.R;
@@ -110,8 +112,9 @@ public class SingerFragment extends Fragment {
             }
         });
     }
-
+    ProgressDialog progressDialog;
     private void GetData() {
+        progressDialog= ProgressDialog.show(getContext(),"Đang tải danh sách...", "Loading...!",false, false);
         DataService dataService = APIService.getService();
         Call<List<CaSi>> callback = dataService.GetAllSinger();
         callback.enqueue(new Callback<List<CaSi>>() {
@@ -122,6 +125,7 @@ public class SingerFragment extends Fragment {
                 
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                progressDialog.dismiss();
             }
 
             @Override

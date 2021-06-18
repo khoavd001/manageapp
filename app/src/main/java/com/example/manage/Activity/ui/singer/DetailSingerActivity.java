@@ -16,9 +16,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.manage.Activity.Manage;
 import com.example.manage.Activity.ui.song.UpdateSongFragment;
 import com.example.manage.Adapter.AllAlbumAdapter;
 import com.example.manage.Adapter.AllSongAdapter;
+import com.example.manage.MainActivity;
 import com.example.manage.Model.Album;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.Model.CaSi;
@@ -42,7 +44,7 @@ public class DetailSingerActivity extends AppCompatActivity {
     Button btn,addsongbtn;
     ProgressBar progressBar;
     TextView txtAlbum;
-    ArrayList<BaiHat> baiHatArrayList= UpdateSongFragment.arrayList;
+    ArrayList<BaiHat> baiHatArrayList= Manage.arrayList;
     ArrayList<Album> albumArrayList;
     public static ArrayList<BaiHat> tempbaiHatArrayList;
     int IdCaSi;
@@ -56,9 +58,14 @@ public class DetailSingerActivity extends AppCompatActivity {
         AnhXa();
         GetIntent();
         toolbar=findViewById(R.id.toolbar_detailsinger);
-        ActionBar actionBar=getSupportActionBar();
-        actionBar.setTitle(caSi.getTenCaSi().toString());
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

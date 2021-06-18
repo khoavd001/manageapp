@@ -36,50 +36,48 @@
         app:layout_constraintTop_toTopOf="@id/fixtoolbar"
         app:layout_constraintVertical_bias="0.072" />
 
+
     <EditText
         android:id="@+id/tenbaihatedit"
         android:layout_width="250dp"
         android:layout_height="47dp"
-        android:background="@drawable/roundeditext"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
-
         android:layout_marginTop="@dimen/activity_vertical_margin"
+
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/roundeditext"
         android:ems="10"
         android:hint="Tên bài hát"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.444" />
-
-
+        app:layout_constraintVertical_bias="0.542" />
 
     <EditText
         android:id="@+id/linkbaihateditext"
         android:layout_width="250dp"
         android:layout_height="47dp"
-
         android:layout_margin="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:background="@drawable/roundeditext"
         android:layout_marginTop="@dimen/activity_vertical_margin"
+
         android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@drawable/roundeditext"
         android:ems="10"
         android:hint="Link bài hát"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.614"
+        app:layout_constraintHorizontal_bias="0.602"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
-        app:layout_constraintVertical_bias="0.578" />
+        app:layout_constraintVertical_bias="0.703" />
 
     <Button
         android:id="@+id/fixsongbtn"
@@ -104,10 +102,10 @@
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintVertical_bias="0.542" />
 
     <TextView
         android:id="@+id/textView6"
@@ -117,10 +115,11 @@
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.267" />
+
 
     <TextView
         android:id="@+id/textView7"
@@ -133,16 +132,12 @@
         app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
-
-
-
-
+        app:layout_constraintVertical_bias="0.69" />
 
     <ImageView
         android:id="@+id/hinhbaihatedit"
-        android:layout_width="121dp"
-        android:layout_height="121dp"
+        android:layout_width="185dp"
+        android:layout_height="194dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -155,13 +150,14 @@
         android:id="@+id/chonlinkfinkmp3btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/roundeditext"
         android:text="Chon link file mp3"
-        app:layout_constraintBottom_toTopOf="@+id/fixsongbtn"
+        app:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linkbaihateditext"
-        app:layout_constraintVertical_bias="0.232" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.828" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

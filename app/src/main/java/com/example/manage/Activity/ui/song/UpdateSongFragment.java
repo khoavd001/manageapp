@@ -1,6 +1,8 @@
 package com.example.manage.Activity.ui.song;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,7 +19,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.manage.Activity.Manage;
 import com.example.manage.Adapter.AllSongAdapter;
+import com.example.manage.MainActivity;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.R;
 import com.example.manage.Service.APIService;
@@ -126,22 +130,26 @@ public class UpdateSongFragment extends Fragment {
         });
     }
     private void GetData() {
-        DataService dataService = APIService.getService();
-        Call<List<BaiHat>> callback = dataService.GetAllSong();
-        callback.enqueue(new Callback<List<BaiHat>>() {
-            @Override
-            public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
-                arrayList = (ArrayList<BaiHat>) response.body();
-                adapter = new AllSongAdapter(getActivity(), arrayList);
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-                recyclerView.setAdapter(adapter);
-            }
 
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
             @Override
-            public void onFailure(Call<List<BaiHat>> call, Throwable t) {
-
+            public void run() {
+                handler.postDelayed(this, 100);
+                if(Manage.arrayList != null){
+                    arrayList = Manage.arrayList;
+                    adapter = new AllSongAdapter(getActivity(), arrayList);
+                    recyclerView.setAdapter(adapter);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                    linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+                    recyclerView.setLayoutManager(linearLayoutManager);
+                    Log.e("BBB", "TC");
+                    handler.removeCallbacks(this);
+                }
             }
-        });
+        };
+        handler.postDelayed(runnable, 100);
+
     }
 
 }

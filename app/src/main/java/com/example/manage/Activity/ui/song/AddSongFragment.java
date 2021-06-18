@@ -32,8 +32,8 @@ public class AddSongFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_addsong, container, false);
-        tenbaihatadd=view.findViewById(R.id.tenbaihateditaddsong);
-        linkbaihatadd=view.findViewById(R.id.linkbaihateditextaddsong);
+        tenbaihatadd=view.findViewById(R.id.tenbaihatadd);
+        linkbaihatadd=view.findViewById(R.id.linkbaihatadd);
         imageView=view.findViewById(R.id.hinhbaihatadd);
         return view;
 
