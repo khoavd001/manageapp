@@ -43,7 +43,7 @@ public class AddSongActivity extends AppCompatActivity {
     Button thembtn;
     int Requesthinhbaihat=123;
     Bitmap bitmap;
-    BaiHat baiHat;
+    BaiHat baiHat=new BaiHat();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,7 +211,6 @@ public class AddSongActivity extends AppCompatActivity {
                     baiHat.setTenBaiHat(tenbaihatedit.getText().toString());
                     baiHat.setLinkBaiHat(linkbaihatedit.getText().toString());
                     baiHat.setHinhBaiHat(TenFile);
-
                     ManageActivity.arrayList.add(baiHat);
                     SongFragment.adapter.notifyDataSetChanged();
                     Toast.makeText(AddSongActivity.this, "Cập nhập thành công", Toast.LENGTH_SHORT).show();

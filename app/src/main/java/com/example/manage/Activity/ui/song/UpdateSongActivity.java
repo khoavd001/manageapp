@@ -23,8 +23,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Base64;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -32,6 +35,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
@@ -61,6 +65,7 @@ public class UpdateSongActivity extends AppCompatActivity {
     Toolbar toolbar;
     int Pos;
     RadioButton rdlinkhinh,rdfilehinh,rdlinkmp3,rdfilemp3;
+    Uri path ;
     Bitmap bitmap,bitmapmp3;
     int idbaihatint;
     @Override
@@ -118,8 +123,28 @@ public class UpdateSongActivity extends AppCompatActivity {
         setrdchecked();
         GetIntent();
 //        choosemp3();
+        setlinkchange();
 
     }
+    private void setlinkchange(){
+        linkhinhbaihat.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
     public void chooseimage(){
         hinhbaihatedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,6 +228,7 @@ public class UpdateSongActivity extends AppCompatActivity {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if(isChecked){
                 enableEditText(linkhinhbaihat);
+                linkhinhbaihat.setText("");
             }
         }
     };
@@ -211,6 +237,15 @@ public class UpdateSongActivity extends AppCompatActivity {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if(isChecked) {
                 disableEditText(linkhinhbaihat);
+                linkhinhbaihat.setText("Click vào hình để chọn ảnh");
+
+                linkhinhbaihat.setClickable(true);
+                linkhinhbaihat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SelectImageUpload(RequestAvatar);
+                    }
+                });
             }
         }
     };
@@ -227,6 +262,7 @@ public class UpdateSongActivity extends AppCompatActivity {
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if(isChecked) {
                 disableEditText(linkbaihatedit);
+
             }
         }
     };
@@ -252,7 +288,7 @@ public class UpdateSongActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK && data != null) {
 
-            Uri path = data.getData();
+            path = data.getData();
             Uri mp3=data.getData();
 
             try {
@@ -286,14 +322,18 @@ public class UpdateSongActivity extends AppCompatActivity {
         return cursor.getString(column_index);
     }
     public void update(){
+        String encodedImage;
+            if(bitmap!=null) {
 
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream);
+                byte[] imageInByte = byteArrayOutputStream.toByteArray();
+               encodedImage = Base64.encodeToString(imageInByte, Base64.DEFAULT);
 
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream);
-            byte[] imageInByte = byteArrayOutputStream.toByteArray();
-            String encodedImage = Base64.encodeToString(imageInByte, Base64.DEFAULT);
-
-
+            }
+           else {
+               encodedImage=null;
+           }
 //        FileInputStream fileInputStream=new FileInputStream(new File(selectedpath));
 
         String TenFile = "https://regulatory-alcoholi.000webhostapp.com/server/picture/" + "HinhBaiHat"+idbaihat + ".jpg";

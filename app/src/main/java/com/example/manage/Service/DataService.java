@@ -60,8 +60,8 @@ public interface DataService {
 
     //Add
     @FormUrlEncoded
-    @POST
-    Call<String> AddSong(@Field("TenBaiHat") String TenBaiHat, @Field("hinhanh") String HinhBaiHat, @Field("filename") String tenfile, @Field("LinkBaiHat") String LinkBaiHat);
+    @POST("addsong.php")
+    Call<String> AddSong(@Field("TenBaiHat") String TenBaiHat, @Field("hinhanh") String HinhBaiHat, @Field("filename") String tenfile, @Field("LinkBaiHat") String linkbaihat);
 
 
 
