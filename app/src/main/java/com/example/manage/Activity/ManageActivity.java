@@ -2,21 +2,18 @@ package com.example.manage.Activity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.manage.Activity.ui.song.SongFragment;
+import com.example.manage.Adapter.AllSongAdapter;
 import com.example.manage.MainActivity;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.R;
 import com.example.manage.Service.APIService;
 import com.example.manage.Service.DataService;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -27,6 +24,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +33,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Manage extends AppCompatActivity {
+public class ManageActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public static ArrayList<BaiHat> arrayList;
@@ -109,31 +107,24 @@ public class Manage extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    public void GetDataSong(){
-        progressDialog= ProgressDialog.show(Manage.this,"Đang tải danh sách...", "Loading...!",false, false);
-        DataService dataService = APIService.getService();
-        Call<List<BaiHat>> callback = dataService.GetAllSong();
+
+    private void GetDataSong() {
+        progressDialog=ProgressDialog.show(ManageActivity.this,"Đang tải danh sách...", "Loading...!",false, false);
+        DataService dataService=APIService.getService();
+        Call<List<BaiHat>> callback=dataService.GetSearchBaiHat("");
         callback.enqueue(new Callback<List<BaiHat>>() {
             @Override
             public void onResponse(Call<List<BaiHat>> call, Response<List<BaiHat>> response) {
-                arrayList = (ArrayList<BaiHat>) response.body();
-
+                arrayList=(ArrayList<BaiHat>) response.body();
                 if(arrayList.size()>0){
-                    progressDialog.dismiss();
-                }
-                else{
-                    Toast.makeText(Manage.this, "Chưa kết nối database", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(Call<List<BaiHat>> call, Throwable t) {
-                progressDialog.dismiss();
-                Toast.makeText(Manage.this, "Lỗi Kết Nối", Toast.LENGTH_SHORT).show();
 
             }
         });
-
     }
 }

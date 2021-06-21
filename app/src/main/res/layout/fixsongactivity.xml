@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <ScrollView
 
         android:layout_width="match_parent"
@@ -17,11 +16,11 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/fixtoolbar"
+                android:id="@+id/addsongtoolbar"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"/>
             <RelativeLayout
-                android:id="@+id/tenbaihatlayout"
+                android:id="@+id/baihat_user_playlist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
@@ -32,7 +31,7 @@
 
                 <TextView
                     android:layout_marginTop="30dp"
-                    android:id="@+id/txttenbaihatupdate"
+                    android:id="@+id/txttenbaihat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tên bài hát:"
@@ -43,15 +42,14 @@
                     android:layout_marginLeft="30dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    app:hintEnabled="false"
                     android:id="@+id/tenbaihatupdatelayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
+                   app:hintEnabled="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     app:hintTextColor="@color/blue"
-                    android:layout_below="@+id/txttenbaihatupdate"
+                    android:layout_below="@+id/txttenbaihat"
                     android:layout_alignParentStart="true"
                     app:boxStrokeColor="@color/blue"
                     android:layout_alignParentLeft="true"
@@ -68,11 +66,10 @@
                     <com.google.android.material.textfield.TextInputEditText
 
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:id="@+id/tenbaihatupdate"
+                        android:id="@+id/tenbaihataddsong"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:singleLine="false"
-                        android:hint="Tên bài hát "/>
+                        android:singleLine="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </RelativeLayout>
             <RelativeLayout
@@ -94,7 +91,7 @@
                 <TextView
                     android:layout_marginStart="30dp"
                     android:layout_marginLeft="30dp"
-                    android:id="@+id/txthinhbaihatupdate"
+                    android:id="@+id/txthinhbaihat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hình bài hát"
@@ -104,10 +101,10 @@
                     android:textSize="25dp" />
 
                 <RadioGroup
-                    android:id="@+id/radiogroupimagesongupdate"
+                    android:id="@+id/radiogroupimagesong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txthinhbaihatupdate"
+                    android:layout_below="@+id/txthinhbaihat"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentEnd="true"
@@ -120,18 +117,18 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/linkimageupdate_a"
+                        android:id="@+id/linkimage_a"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:buttonTint="@color/blue"
-                        android:checked="true"
                         android:text="Link"
                         android:textSize="18dp"
+                        android:checked="true"
                         android:layout_marginLeft="30dp" />
 
                     <RadioButton
-                        android:id="@+id/linkimamgeupdate_b"
+                        android:id="@+id/linkimamge_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:buttonTint="@color/blue"
@@ -145,12 +142,12 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/linkhinhbaihatupdatelayout"
+                    android:id="@+id/linkbaihataddlayout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:boxStrokeColor="@color/blue"
-                    android:layout_below="@+id/radiogroupimagesongupdate"
+                    android:layout_below="@+id/radiogroupimagesong"
                     android:layout_alignParentStart="true"
                     app:hintTextColor="@color/blue"
                     android:layout_alignParentLeft="true"
@@ -165,17 +162,17 @@
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/linkhinhbaihatupdate"
+                        android:id="@+id/edittxtaddsongimage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="false"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
-                    android:id="@+id/hinhbaihatupdate"
+                    android:id="@+id/hinhbaihatadd"
                     android:layout_width="wrap_content"
                     android:layout_height="240dp"
-                    android:layout_below="@+id/linkhinhbaihatupdatelayout"
+                    android:layout_below="@+id/linkbaihataddlayout"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentEnd="true"
@@ -207,7 +204,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginLeft="30dp"
-                    android:id="@+id/txtlinkbaihatupdate"
+                    android:id="@+id/txtlinkbaihat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Link bài hát"
@@ -216,10 +213,10 @@
                     android:textStyle="bold"/>
 
                 <RadioGroup
-                    android:id="@+id/radiogrouplinksongupdate"
+                    android:id="@+id/radiogrouplinksong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtlinkbaihatupdate"
+                    android:layout_below="@+id/txtlinkbaihat"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentEnd="true"
@@ -232,7 +229,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/linksongupdate_a"
+                        android:id="@+id/linksong_a"
                         android:layout_width="wrap_content"
                         android:buttonTint="@color/blue"
                         android:layout_height="wrap_content"
@@ -243,7 +240,7 @@
                         android:layout_marginLeft="30dp" />
 
                     <RadioButton
-                        android:id="@+id/linksongupdate_b"
+                        android:id="@+id/linksong_b"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -256,32 +253,32 @@
                 </RadioGroup>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/linkbaihatupdatelayout"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                android:id="@+id/linkbaihatlayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:layout_below="@+id/radiogrouplinksongupdate"
+                    android:layout_below="@+id/radiogrouplinksong"
                     app:hintTextColor="@color/blue"
-                    android:layout_alignParentStart="true"
-                    app:boxStrokeColor="@color/blue"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginLeft="131dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginRight="161dp"
-                    android:ems="10"
-                    android:hint="Link bài hát"
-                    >
+                android:layout_alignParentStart="true"
+                app:boxStrokeColor="@color/blue"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="131dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="161dp"
+                android:ems="10"
+                android:hint="Link bài hát"
+                >
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/linkbaihatupdate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="false"/>
-                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edittxtlinkbaihataddsong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"/>
+            </com.google.android.material.textfield.TextInputLayout>
             </RelativeLayout>
 
             <RelativeLayout
@@ -298,6 +295,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp">
 
+<!--                <Button-->
+<!--                    android:id="@+id/addsong"-->
+<!--                    android:layout_width="150dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_alignParentStart="true"-->
+<!--                    android:layout_alignParentLeft="true"-->
+<!--                    android:layout_marginStart="30dp"-->
+<!--                    android:layout_marginLeft="30dp"-->
+
+
+
+<!--                    android:layout_marginBottom="30dp"-->
+<!--                    android:background="@drawable/roundeditext"-->
+<!--                    android:text="Thêm"-->
+<!--                    app:backgroundTint="@color/blue" />-->
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -315,17 +327,16 @@
                     app:strokeWidth="1dp"
                     android:layout_marginRight="30dp"
                     android:layout_alignParentRight="true" />
-                <Button
-
-                    android:layout_width="150dp"
-                    android:id="@+id/fixsongbtn"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/cancel_button"
-                    android:layout_marginEnd="50dp"
-                    android:layout_marginRight="50dp"
-                    android:backgroundTint="@color/blue"
-                    android:textColor="@color/white"
-                    android:text="Cập nhập"/>
+            <Button
+                android:id="@+id/addsongbtn"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/cancel_button"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
+                android:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:text="Thêm"/>
 
             </RelativeLayout>
 

@@ -58,6 +58,11 @@ public interface DataService {
     @POST("deletesong.php")
     Call<String> GetDelteBaiHat(@Field("IdBaiHat") int IdBaiHat);
 
+    //Add
+    @FormUrlEncoded
+    @POST
+    Call<String> AddSong(@Field("TenBaiHat") String TenBaiHat, @Field("hinhanh") String HinhBaiHat, @Field("filename") String tenfile, @Field("LinkBaiHat") String LinkBaiHat);
+
 
 
 }

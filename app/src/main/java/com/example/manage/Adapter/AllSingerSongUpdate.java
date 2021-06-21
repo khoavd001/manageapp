@@ -43,7 +43,11 @@ public class AllSingerSongUpdate extends RecyclerView.Adapter<AllSingerSongUpdat
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+
+        if(arrayList!=null){
+            return arrayList.size();}
+        else
+            return 0;
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder{

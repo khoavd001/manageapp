@@ -47,7 +47,7 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/cardview_all_song"
             android:layout_below="@id/txt_song_all"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"/>
 
         <ImageButton
@@ -59,7 +59,7 @@
             android:layout_toRightOf="@+id/txt_song_casi_all"
             android:background="@color/cardview_light_background"
             android:src="@drawable/ic_delete"
-            tools:src="@drawable/ic_launcher_background" />
+             />
 
     </RelativeLayout>
 </RelativeLayout>

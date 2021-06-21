@@ -1,25 +1,18 @@
 package com.example.manage;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
-import android.text.method.TransformationMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.manage.Activity.Manage;
-import com.example.manage.Activity.ui.song.UpdateSongFragment;
-import com.example.manage.Adapter.AllSongAdapter;
+import com.example.manage.Activity.ManageActivity;
 import com.example.manage.Model.Account;
-import com.example.manage.Model.BaiHat;
 import com.example.manage.Service.APIService;
 import com.example.manage.Service.DataService;
 
@@ -60,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                             ArrayList<Account> mangaccount=(ArrayList<Account>) response.body();
                             if(mangaccount.size()>0){
-                                Intent intent=new Intent(MainActivity.this, Manage.class);
+                                Intent intent=new Intent(MainActivity.this, ManageActivity.class);
 //                                intent.putExtra("accountname", username);
                                 startActivity(intent);
                                 progressDialog.dismiss();

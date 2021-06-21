@@ -12,18 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Manage">
-
-
-        <activity android:name=".Activity.ui.singer.DetailSingerActivity" />
-        <activity android:name=".Activity.ui.song.UpdateSongActivity" />
         <activity
-            android:name=".Activity.Manage"
-            android:label="@string/title_activity_manage"
-            android:theme="@style/Theme.Manage.NoActionBar" />
-        <activity android:name=".MainActivity">
+            android:name=".Activity.ui.song.AddSongActivity"
+            android:label="@string/title_activity_add_song"
+            android:theme="@style/Theme.Manage.NoActionBar"></activity>
+        <activity android:name=".Activity.ui.singer.DetailSingerActivity" />
+        <activity android:name=".Activity.ui.song.UpdateSongActivity" /> <!-- <activity -->
+        <!-- android:name=".Activity.Manage" -->
+        <!-- android:label="@string/title_activity_manage" -->
+        <!-- android:theme="@style/Theme.Manage.NoActionBar" /> -->
+        <activity android:name=".Activity.ManageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                android:label="@string/title_activity_manage"
+                android:theme="@style/Theme.Manage.NoActionBar" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

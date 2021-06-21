@@ -1,6 +1,5 @@
 package com.example.manage.Activity.ui.singer;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -16,11 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.manage.Activity.Manage;
-import com.example.manage.Activity.ui.song.UpdateSongFragment;
+import com.example.manage.Activity.ManageActivity;
 import com.example.manage.Adapter.AllAlbumAdapter;
 import com.example.manage.Adapter.AllSongAdapter;
-import com.example.manage.MainActivity;
 import com.example.manage.Model.Album;
 import com.example.manage.Model.BaiHat;
 import com.example.manage.Model.CaSi;
@@ -44,7 +41,7 @@ public class DetailSingerActivity extends AppCompatActivity {
     Button btn,addsongbtn;
     ProgressBar progressBar;
     TextView txtAlbum;
-    ArrayList<BaiHat> baiHatArrayList= Manage.arrayList;
+    ArrayList<BaiHat> baiHatArrayList= ManageActivity.arrayList;
     ArrayList<Album> albumArrayList;
     public static ArrayList<BaiHat> tempbaiHatArrayList;
     int IdCaSi;
