@@ -1,6 +1,7 @@
 package com.example.manage.Activity.ui.song;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.manage.Activity.ManageActivity;
@@ -10,9 +11,11 @@ import com.example.manage.Model.BaiHat;
 import com.example.manage.R;
 import com.example.manage.Service.APIService;
 import com.example.manage.Service.DataService;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.picasso.Picasso;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -47,6 +50,7 @@ public class UpdateSongActivity extends AppCompatActivity {
     TextInputEditText tenbaihatedit,linkbaihatedit,linkhinhbaihat;
     ImageView hinhbaihatedit;
     Button capnhap,chonlinkfile;
+    MaterialButton cancle;
     Spinner spinner;
     ImageButton imageButton;
 
@@ -74,6 +78,26 @@ public class UpdateSongActivity extends AppCompatActivity {
         rdfilehinh=findViewById(R.id.linkimamgeupdate_b);
         rdlinkmp3=findViewById(R.id.linksongupdate_a);
         rdfilemp3=findViewById(R.id.linksongupdate_b);
+        cancle=findViewById(R.id.cancelupdatebtn);
+        cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(UpdateSongActivity.this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Closing Activity")
+                        .setMessage("Are you sure you want to close this activity?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+            }
+        });
         capnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -264,10 +288,11 @@ public class UpdateSongActivity extends AppCompatActivity {
     public void update(){
 
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream);
-        byte[] imageInByte = byteArrayOutputStream.toByteArray();
-        String encodedImage = Base64.encodeToString(imageInByte,Base64.DEFAULT);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 75, byteArrayOutputStream);
+            byte[] imageInByte = byteArrayOutputStream.toByteArray();
+            String encodedImage = Base64.encodeToString(imageInByte, Base64.DEFAULT);
+
 
 //        FileInputStream fileInputStream=new FileInputStream(new File(selectedpath));
 
@@ -296,7 +321,7 @@ public class UpdateSongActivity extends AppCompatActivity {
                     finish();
                 }
 
-                SongFragment.adapter.notifyItemChanged(Pos);
+                SongFragment.adapter.notifyDataSetChanged();
 
             }
 
